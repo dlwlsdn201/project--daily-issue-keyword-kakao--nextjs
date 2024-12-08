@@ -11,7 +11,10 @@ export const Navigation = ({}): React.ReactElement => {
     targetPath === currentPath ? '⇦' : '';
 
   const navigationItems = NavigationList.map((item) => (
-    <li className="flex gap-2 " key={item.path}>
+    <li
+      className="flex gap-2 border px-2 border-red-500 rounded-sm"
+      key={item.path}
+    >
       <Link href={item.path}>{item.label}</Link>
       {currentArrow(item.path)}
     </li>
@@ -19,7 +22,7 @@ export const Navigation = ({}): React.ReactElement => {
 
   return (
     <nav>
-      <ul style={{ listStyle: 'none', textDecoration: 'none' }}>
+      <ul className="list-none no-underline flex gap-2 border-2">
         {...navigationItems}
       </ul>
     </nav>

@@ -10,7 +10,7 @@ describe('Root component', () => {
     render(<LoginPage {...props} />);
 
     // Root page라는 텍스트가 화면에 나타나는지 확인합니다.
-    const textElement = screen.getByText(/Root page/i);
-    expect(textElement).toBeInTheDocument();
+    const titleElement = screen.getByText(/핫이슈 알림 서비스/i);
+    expect(titleElement).toBeInTheDocument();
   });
 });

@@ -1,7 +1,15 @@
 // import { Navigation } from "@shared/ui";
+import { config } from '@fortawesome/fontawesome-svg-core';
 import { Navigation } from '@shared/ui';
 import '@style/globals.css';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false; // Next.js에서 CSS를 직접 추가하지 않도록 설정
 import Script from 'next/script';
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
+import '@mantine/core/styles.css';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import StyledComponentsRegistry from '@/src/app/lib/registry';
 
 export const metadata = {
   title: 'Next.js',
@@ -15,6 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body>
         <header style={{ width: '100%' }}>
           <Navigation />
@@ -23,9 +34,21 @@ export default function RootLayout({
           id="container"
           style={{ display: 'flex', height: '100%', flexFlow: 'column nowrap' }}
         >
-          {children}
+          <MantineProvider>
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </MantineProvider>
         </div>
-        <Script src="https://kit.fontawesome.com/a9f70cc687.js" />
+        {/* fontAwesome Icon 패키지 키트 스크립트 */}
+        <Script
+          crossOrigin="anonymous"
+          src="https://kit.fontawesome.com/a9f70cc687.js"
+        />
+        {/* Kakao auth 스크립트 */}
+        {/* <Script
+          integrity="${INTEGRITY_VALUE}"
+          crossOrigin="anonymous"
+          src="https://t1.kakaocdn.net/kakao_js_sdk/${VERSION}/kakao.min.js"
+        /> */}
       </body>
     </html>
   );

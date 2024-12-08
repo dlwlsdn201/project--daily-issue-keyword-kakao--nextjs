@@ -5,11 +5,15 @@ interface Navigation {
 
 export const NavigationList: Navigation[] = [
   {
-    path: "/",
-    label: "홈",
+    path: '/',
+    label: '홈',
   },
   {
-    path: "/about-us",
-    label: "소개",
+    path: '/signIn',
+    label: '로그인 ',
+  },
+  {
+    path: '/dashboard',
+    label: '대시보드 ',
   },
 ];

@@ -1,0 +1,1 @@
+export { SettingNotificationActivate } from './SettingNotificationActivate';
