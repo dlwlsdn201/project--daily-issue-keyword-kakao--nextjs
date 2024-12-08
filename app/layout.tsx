@@ -1,6 +1,7 @@
 // import { Navigation } from "@shared/ui";
 import { Navigation } from '@shared/ui';
 import '@style/globals.css';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'Next.js',
@@ -24,6 +25,7 @@ export default function RootLayout({
         >
           {children}
         </div>
+        <Script src="https://kit.fontawesome.com/a9f70cc687.js" />
       </body>
     </html>
   );
