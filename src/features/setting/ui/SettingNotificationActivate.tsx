@@ -1,17 +1,31 @@
 'use client';
 
-import { SharedSwitch } from '@/src/shared/ui';
+import { NotiFail, NotiSuccess, SharedSwitch } from '@/src/shared/ui';
 import { useSwitch } from '@/src/shared/ui/switch/hooks/useSwitch';
+import { useNotificationStore } from '@/src/stores/useNotification';
 import { faBell, faBellSlash } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect } from 'react';
 
 export const SettingNotificationActivate = () => {
   const switchCustomHook = useSwitch({
     initialValue: false,
   });
+
+  const { changeNotiType } = useNotificationStore();
+
+  const showNotification = (value: boolean) => {
+    const type = !!value ? 'success' : 'fail';
+    changeNotiType(type);
+  };
+
   const { checked } = switchCustomHook;
 
   const NOTIFICATION_ENABLED = checked;
+  useEffect(() => {
+    showNotification(checked);
+  }, [checked]);
+
   return (
     <>
       <h2 className="text-lg font-semibold mb-4">알림 설정</h2>

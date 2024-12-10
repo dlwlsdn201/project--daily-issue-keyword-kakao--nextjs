@@ -10,6 +10,7 @@ import Script from 'next/script';
 import '@mantine/core/styles.css';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import StyledComponentsRegistry from '@/src/app/lib/registry';
+import NotiProvider from '@/src/widgets/common/NotiProvider';
 
 export const metadata = {
   title: 'Next.js',
@@ -35,7 +36,10 @@ export default function RootLayout({
           style={{ display: 'flex', height: '100%', flexFlow: 'column nowrap' }}
         >
           <MantineProvider>
-            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+            <StyledComponentsRegistry>
+              {children}
+              <NotiProvider />
+            </StyledComponentsRegistry>
           </MantineProvider>
         </div>
         {/* fontAwesome Icon 패키지 키트 스크립트 */}
