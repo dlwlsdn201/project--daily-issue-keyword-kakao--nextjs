@@ -2,14 +2,20 @@
 
 import { NotiSuccess, NotiFail } from '@/src/shared/ui';
 import { useNotificationStore } from '@/src/stores/useNotification';
+import { Notifications } from '@mantine/notifications';
 
-const NotiProvider = () => {
+export const NotiProvider = () => {
   const { notiType } = useNotificationStore();
+
   console.log({ notiType });
   if (!!!notiType) return null;
 
-  if (notiType === 'success') return <NotiSuccess />;
-  if (notiType === 'fail') return <NotiFail />;
-};
+  const instance = notiType === 'success' ? <NotiSuccess /> : <NotiFail />;
 
-export default NotiProvider;
+  return (
+    <>
+      <Notifications />
+      {instance}
+    </>
+  );
+};

@@ -8,9 +8,10 @@ import Script from 'next/script';
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import StyledComponentsRegistry from '@/src/app/lib/registry';
-import NotiProvider from '@/src/widgets/common/NotiProvider';
+import { NotiProvider } from '@/src/widgets/common';
 
 export const metadata = {
   title: 'Next.js',
@@ -24,24 +25,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <ColorSchemeScript />
-      </head>
+      <head>{/* <ColorSchemeScript /> */}</head>
       <body>
         <header style={{ width: '100%' }}>
           <Navigation />
         </header>
-        <div
-          id="container"
-          style={{ display: 'flex', height: '100%', flexFlow: 'column nowrap' }}
-        >
-          <MantineProvider>
-            <StyledComponentsRegistry>
-              {children}
-              <NotiProvider />
-            </StyledComponentsRegistry>
-          </MantineProvider>
-        </div>
+        <MantineProvider>
+          <div
+            id="container"
+            style={{
+              display: 'flex',
+              height: '100%',
+              flexFlow: 'column nowrap',
+            }}
+          >
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </div>
+          <NotiProvider />
+        </MantineProvider>
         {/* fontAwesome Icon 패키지 키트 스크립트 */}
         <Script
           crossOrigin="anonymous"

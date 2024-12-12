@@ -1,10 +1,10 @@
-import { Notification } from '@mantine/core';
-import React from 'react';
+import { notifications } from '@mantine/notifications';
 
 export const NotiSuccess = () => {
-  return (
-    <Notification color="teal" title="성공" mt="md">
-      성공하였습니다.
-    </Notification>
-  );
+  return notifications.show({
+    title: '성공',
+    message: '설정이 완료되었습니다.',
+    position: 'top-right',
+    autoClose: 2000,
+  });
 };

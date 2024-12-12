@@ -4,7 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { SettingNotificationActivate } from '@/src/features/setting/ui';
 
-export const DashboardWidget = () => {
+export const DashboardWidget = ({
+  user,
+  notificationEnabled,
+  toggleNotification,
+}) => {
   /* NOTE - [개발용 샘플 코드] */
   const USER = { name: '테스트' };
 
