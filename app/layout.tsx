@@ -49,11 +49,11 @@ export default function RootLayout({
           src="https://kit.fontawesome.com/a9f70cc687.js"
         />
         {/* Kakao auth 스크립트 */}
-        {/* <Script
-          integrity="${INTEGRITY_VALUE}"
+        <Script
+          // integrity="${INTEGRITY_VALUE}"
           crossOrigin="anonymous"
-          src="https://t1.kakaocdn.net/kakao_js_sdk/${VERSION}/kakao.min.js"
-        /> */}
+          src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
+        />
       </body>
     </html>
   );
