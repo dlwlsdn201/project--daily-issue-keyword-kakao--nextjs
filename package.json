@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:auto": "jest --watch --coverage",
-    "dev": "next dev --turbopack",
+    "dev": "node server.js --turbopack",
     "build": "pnpm eslint . && next build"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
     "@mantine/modals": "^7.14.3",
     "@mantine/notifications": "^7.14.3",
     "next": "^15.1.0",
+    "postcss-simple-vars": "^7.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "styled-components": "^5.3.11",
