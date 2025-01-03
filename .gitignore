@@ -10,3 +10,10 @@ node_modules
 
 # Jest
 coverage
+
+#keys
+*.pem
+
+# env
+.env.*
+.env

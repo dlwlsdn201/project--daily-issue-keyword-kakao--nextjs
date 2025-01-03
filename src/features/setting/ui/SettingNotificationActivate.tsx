@@ -1,6 +1,6 @@
 'use client';
 
-import { NotiFail, NotiSuccess, SharedSwitch } from '@/src/shared/ui';
+import { SharedSwitch } from '@/src/shared/ui';
 import { useSwitch } from '@/src/shared/ui/switch/hooks/useSwitch';
 import { useNotificationStore } from '@/src/stores/useNotification';
 import { faBell, faBellSlash } from '@fortawesome/free-regular-svg-icons';
@@ -8,22 +8,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect } from 'react';
 
 export const SettingNotificationActivate = () => {
+  const { changeNotiType } = useNotificationStore();
   const switchCustomHook = useSwitch({
     initialValue: false,
   });
-
-  const { changeNotiType } = useNotificationStore();
-
-  const showNotification = (value: boolean) => {
-    const type = !!value ? 'success' : 'fail';
-    changeNotiType(type);
-  };
-
   const { checked } = switchCustomHook;
 
   const NOTIFICATION_ENABLED = checked;
+
   useEffect(() => {
-    showNotification(checked);
+    try {
+      changeNotiType('success');
+    } catch (error) {
+      changeNotiType('fail');
+    }
   }, [checked]);
 
   return (
